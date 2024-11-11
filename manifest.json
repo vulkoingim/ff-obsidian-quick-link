@@ -1,0 +1,15 @@
+{
+  "manifest_version": 2,
+  "name": "Obsidian Quick Link",
+  "version": "1.0",
+  "description": "Creates an Obsidian Avanced URI link from the current page",
+  "permissions": ["activeTab"],
+
+  "browser_action": {
+    "default_title": "Save to Obsidian"
+  },
+
+  "background": {
+    "scripts": ["background.js"]
+  }
+}
