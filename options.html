@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Obsidian Quick Link Options</title>
+  <style>
+    body {
+      padding: 20px;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+    .form-group {
+      margin-bottom: 15px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+    input[type="text"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 5px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    .help-text {
+      font-size: 0.85em;
+      color: #666;
+      margin-bottom: 10px;
+    }
+    button {
+      background: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    button.secondary {
+      background: #607D8B;
+    }
+    button.secondary:hover {
+      background: #546E7A;
+    }
+    #status {
+      margin-top: 10px;
+      padding: 10px;
+      display: none;
+      border-radius: 4px;
+    }
+    .success {
+      background-color: #dff0d8;
+      color: #3c763d;
+    }
+    .error {
+      background-color: #f2dede;
+      color: #a94442;
+    }
+    details {
+      margin-top: 20px;
+      padding: 10px;
+      background: #f9f9f9;
+      border-radius: 4px;
+    }
+    summary {
+      cursor: pointer;
+      padding: 5px;
+      font-weight: 500;
+    }
+    .preview {
+      margin-top: 10px;
+      padding: 10px;
+      background: #f5f5f5;
+      border-radius: 4px;
+      word-break: break-all;
+      font-family: monospace;
+      font-size: 0.9em;
+    }
+    .default-uri {
+      margin-top: 5px;
+      padding: 10px;
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 4px;
+      font-family: monospace;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <form id="options-form">
+    <div class="form-group">
+      <label for="vault">Vault Name:</label>
+      <input type="text" id="vault" name="vault">
+      <div class="help-text">
+        Default Vault:<br>
+        <div class="default-uri">Obsidian</div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="heading">Heading:</label>
+      <input type="text" id="heading" name="heading">
+      <div class="help-text">
+        Default Heading:<br>
+        <div class="default-uri">Links</div>
+      </div>
+    </div>
+    
+    <div class="form-group">
+      <label for="template">Link Template:</label>
+      <input type="text" id="template" name="template">
+      <div class="help-text">
+        Use {title} and {url} as placeholders<br>
+        Default:<br>
+        <div class="default-uri">* [ ] [{title}]({url})</div>
+      </div>
+    </div>
+
+    <details>
+      <summary>Advanced Settings</summary>
+      <div class="form-group">
+        <label for="uriTemplate">Custom URI Template:</label>
+        <input type="text" id="uriTemplate" name="uriTemplate">
+        <div class="help-text">
+          Available placeholders: {vault}, {heading}, {content}, {title}, {url}<br>
+          Leave empty to use default template:<br>
+          <div class="default-uri">obsidian://advanced-uri?vault={vault}&daily=true&heading={heading}&data={content}&mode=append</div>
+        </div>
+        <button type="button" id="testUri" class="secondary">Test URI</button>
+        <div id="uriPreview" class="preview" style="display: none;"></div>
+      </div>
+    </details>
+    
+    <button type="submit">Save Options</button>
+  </form>
+  
+  <div id="status"></div>
+  
+  <script src="options.js"></script>
+</body>
+</html>
