@@ -1,0 +1,4 @@
+# Dirs
+.DS_Store
+.direnv
+.project
